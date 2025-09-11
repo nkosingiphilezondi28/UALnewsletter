@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAL Newsletter Article Submission</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #003366; /* Dark Blue */
+            --secondary: #FF6600; /* Orange */
+            --accent: #FF6600;
+            --dark: #003366;
+            --darker: #002244;
+            --light: #ffffff; /* White background */
+            --text: #000000; /* Black text */
+            --card-bg: #f8f9fa; /* Very light grey for cards */
+            --sidebar-width: 280px;
+            --lighter-blue: #3399cc;
+            --golden-yellow: #FFD700;
+        }
+
+        body {
+            background: var(--light); /* White background */
+            color: var(--text); /* Black text */
+            min-height: 100vh;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            font-size: 18px; /* Increased base font size */
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(0, 51, 102, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 102, 0, 0.03) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 51, 102, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 51, 102, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* --- Sidebar styling --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            padding: 15px;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            border-radius: 9px;
+            margin-right: 20px;
+            backdrop-filter: blur(10px);
+            height: fit-content;
+            position: sticky;
+            top: 15px;
+        }
+
+        /* --- Animated UAL Logo Container --- */
+        /* --- MODIFIED: Make container a link --- */
+        .sidebar-logo-link {
+            display: block; /* Make the link behave like a block element */
+            text-decoration: none; /* Remove default underline */
+            color: inherit; /* Inherit text color */
+        }
+        .sidebar-logo-container {
+            width: 100%;
+            aspect-ratio: 1; /* Makes it square */
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 51, 102, 0.2);
+            background-color: #000; /* Black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+             /* --- MODIFIED: Add cursor pointer to indicate it's clickable --- */
+            cursor: pointer;
+            transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+        }
+        .sidebar-logo-container:hover {
+             /* --- MODIFIED: Add glow effect on hover --- */
+            box-shadow:
+                0 0 10px var(--primary),
+                0 0 20px var(--secondary),
+                0 0 30px var(--primary);
+        }
+        /* --- END MODIFICATION --- */
+
+
+        .ual-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 3rem; /* Adjust size as needed */
+            color: #c0c0c0; /* Silver color */
+            text-shadow:
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #0ff, /* Cyan glow */
+                0 0 35px #0ff,
+                0 0 40px #0ff;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow:
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 15px #fff,
+                    0 0 20px #0ff,
+                    0 0 35px #0ff,
+                    0 0 40px #0ff;
+            }
+            to {
+                text-shadow:
+                    0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px #fff,
+                    0 0 40px #f0f, /* Magenta glow */
+                    0 0 70px #f0f,
+                    0 0 80px #f0f;
+            }
+        }
+
+        /* --- MODIFIED: Style for the caption --- */
+        .logo-caption {
+            text-align: center;
+            font-size: 0.85rem; /* Smaller font size */
+            color: var(--primary); /* Use primary color */
+            margin-top: -10px; /* Pull caption closer to the logo */
+            margin-bottom: 15px; /* Space below the caption */
+            font-style: italic; /* Italicize the caption */
+        }
+        /* --- END MODIFICATION --- */
+
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sidebar-link {
+            color: var(--primary);
+            text-decoration: none;
+            padding: 12px 15px; /* Increased padding */
+            border-radius: 6px;
+            background: rgba(0, 51, 102, 0.05);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            transition: all 0.3s ease;
+            font-size: 1.1rem; /* Increased font size */
+            text-align: center;
+        }
+
+        .sidebar-link:hover {
+            background: rgba(0, 51, 102, 0.15);
+            box-shadow: 0 0 12px rgba(0, 51, 102, 0.5);
+            transform: translateY(-1.5px);
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 0 15px; /* Increased padding */
+            margin-bottom: 20px; /* Increased margin */
+            position: relative;
+            background: linear-gradient(to right, rgba(0, 51, 102, 0.1), transparent);
+            border-bottom: 1px solid rgba(0, 51, 102, 0.2);
+            border-radius: 0 0 10px 10px;
+        }
+
+        h1 {
+            font-size: 2.2rem; /* Increased font size */
+            margin-bottom: 10px; /* Increased margin */
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            text-shadow: 0 0 9px rgba(0, 51, 102, 0.5);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 10%;
+            width: 80%;
+            height: 1.2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+            border-radius: 50%;
+        }
+
+        .subtitle {
+            font-size: 1.1rem; /* Increased font size */
+            color: #444;
+            max-width: 800px;
+            margin: 12px auto 15px; /* Increased margins */
+            line-height: 1.5;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            border-radius: 9px;
+            padding: 15px; /* Increased padding */
+            max-width: 95%;
+            margin: 20px auto; /* Increased margin */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(0, 51, 102, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-card-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-card-quote {
+            flex-grow: 1;
+            color: #333;
+            font-size: 1.1rem; /* Increased font size */
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2.4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 24px rgba(0, 51, 102, 0.3);
+        }
+
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .contact-card h2 {
+            color: var(--primary);
+            margin-bottom: 12px; /* Increased margin */
+            font-size: 1.4rem; /* Increased font size */
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-family: 'Orbitron', sans-serif;
+            z-index: 1;
+            position: relative;
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.1rem; /* Increased font size */
+            transition: all 0.3s ease;
+            word-break: break-word;
+            display: inline-block;
+            padding: 5px 8px; /* Increased padding */
+            border-radius: 3px;
+        }
+
+        .contact-card a:hover {
+            color: var(--secondary);
+            text-shadow: 0 0 9px rgba(255, 102, 0, 0.7);
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Grid layout for cards */
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            border-radius: 9px;
+            padding: 20px; /* Increased padding */
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2.4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 9px 24px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 51, 102, 0.4);
+        }
+
+        .article-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .article-card h3 {
+            color: var(--primary);
+            font-size: 1.4rem; /* Increased font size */
+            margin-bottom: 12px; /* Increased margin */
+            line-height: 1.3;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 0 0 6px rgba(0, 51, 102, 0.3);
+        }
+
+        .article-card h3 i {
+            font-size: 1.3rem; /* Increased icon size */
+        }
+
+        .article-content {
+            color: #222;
+            font-size: 1.1rem; /* Increased font size */
+            line-height: 1.6; /* Slightly increased line height */
+            margin-bottom: 15px; /* Increased margin */
+            flex-grow: 1;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .article-content p {
+            margin-bottom: 12px; /* Increased margin */
+        }
+
+        .article-content ul, .article-content ol {
+            padding-left: 20px; /* Increased padding */
+            margin-bottom: 12px; /* Increased margin */
+        }
+
+        .article-content li {
+            margin-bottom: 8px; /* Increased margin */
+        }
+
+        .citation {
+            background: rgba(0, 51, 102, 0.1);
+            color: var(--primary);
+            padding: 5px 10px; /* Increased padding */
+            border-radius: 12px;
+            font-size: 0.9rem; /* Increased font size */
+            border: 1px solid rgba(0, 51, 102, 0.2);
+            display: inline-block;
+            margin: 6px 0; /* Increased margin */
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Increased gap */
+            margin: 10px 0; /* Increased margin */
+        }
+
+        .meta-tag {
+            background: rgba(0, 51, 102, 0.1);
+            color: var(--primary);
+            padding: 5px 10px; /* Increased padding */
+            border-radius: 12px;
+            font-size: 0.9rem; /* Increased font size */
+            border: 1px solid rgba(0, 51, 102, 0.2);
+            text-shadow: 0 0 3px rgba(0, 51, 102, 0.2);
+        }
+
+        .new-tag {
+            background: rgba(255, 102, 0, 0.1);
+            color: var(--accent);
+            border-color: rgba(255, 102, 0, 0.2);
+            text-shadow: 0 0 3px rgba(255, 102, 0, 0.2);
+        }
+
+        .article-link {
+            display: inline-block;
+            color: var(--light);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            padding: 10px 18px; /* Increased padding */
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 51, 102, 0.3);
+            text-align: center;
+            width: 100%;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.6px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 15px; /* Increased margin */
+            font-size: 1.1rem; /* Increased font size */
+        }
+
+        .article-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .article-link:hover {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            color: var(--light);
+            box-shadow: 0 0 12px rgba(0, 51, 102, 0.5);
+            transform: translateY(-1.8px);
+        }
+
+        .article-link:hover::before {
+            left: 100%;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 30px 0 15px; /* Increased padding */
+            color: #555;
+            font-size: 0.9rem; /* Increased font size */
+            border-top: 1px solid rgba(0, 51, 102, 0.1);
+            margin-top: 30px; /* Increased margin */
+        }
+
+        .copyright p {
+            margin: 8px 0; /* Increased margin */
+        }
+
+        .copyright a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .copyright a:hover {
+            color: var(--secondary);
+            text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+        }
+
+        .university-logo {
+            width: 120px; /* Increased width */
+            margin: 12px auto; /* Increased margin */
+            filter: brightness(0.8);
+            opacity: 0.7;
+        }
+
+        /* --- Specific styles for iframe and contact info --- */
+        .google-form-container {
+            grid-column: 1 / -1; /* Span full width */
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            border-radius: 9px;
+            padding: 20px; /* Increased padding */
+            margin: 20px 0; /* Increased margin */
+            box-shadow: 0 0 18px rgba(0, 51, 102, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .google-form-container::before {
+             content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2.4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .google-form-container:hover {
+            box-shadow: 0 6px 24px rgba(0, 51, 102, 0.3);
+        }
+        .google-form-container:hover::before {
+            transform: scaleX(1);
+        }
+        .google-form-container h3 {
+            color: var(--primary);
+            font-size: 1.4rem; /* Increased font size */
+            margin-bottom: 15px; /* Increased margin */
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Increased gap */
+            font-family: 'Orbitron', sans-serif;
+        }
+        .google-form-iframe {
+            width: 100%;
+            height: 900px; /* Increased height */
+            /* --- MODIFIED: Added glowing border --- */
+            box-shadow: 0 0 15px rgba(0, 51, 102, 0.5), 0 0 15px rgba(255, 102, 0, 0.5); /* Glowing border */
+            border: 1px solid var(--primary); /* Solid base border */
+            border-radius: 5px;
+            margin-top: 15px; /* Increased margin */
+            /* --- END MODIFICATION --- */
+        }
+        .contact-info {
+            margin-top: 15px; /* Increased margin */
+        }
+        .contact-info p {
+            margin-bottom: 8px; /* Increased margin */
+            font-size: 1.1rem; /* Increased font size */
+        }
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: underline;
+            font-size: 1.1rem; /* Increased font size */
+        }
+        .contact-info a:hover {
+            color: var(--secondary);
+        }
+        /* --- End of specific styles --- */
+
+        /* --- Media Queries for Mobile Compatibility --- */
+        @media (max-width: 900px) {
+            body {
+                flex-direction: column;
+                padding: 10px;
+                font-size: 16px; /* Adjust font size for smaller screens */
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8rem; /* Adjusted font size */
+            }
+
+            .subtitle {
+                font-size: 1rem; /* Adjusted font size */
+            }
+
+            .contact-card-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.6rem; /* Adjusted font size */
+            }
+
+            .contact-card a, .contact-info a, .contact-info p, .article-content, .article-link, .sidebar-link, .logo-caption {
+                font-size: 1rem; /* Adjusted font size */
+            }
+
+            .article-card {
+                padding: 15px 12px; /* Adjusted padding */
+            }
+
+            .article-card h3 {
+                font-size: 1.2rem; /* Adjusted font size */
+            }
+
+            .subtitle {
+                font-size: 0.9rem; /* Adjusted font size */
+            }
+
+            .sidebar {
+                padding: 10px;
+            }
+            .contact-card-quote {
+                font-size: 0.95rem; /* Adjusted font size */
+            }
+            .google-form-iframe {
+                height: 700px; /* Adjust height for smaller screens if needed */
+            }
+            .ual-logo {
+                font-size: 2.5rem; /* Adjust size for smaller screens */
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.4rem; /* Adjusted font size */
+            }
+
+            .article-card h3 {
+                font-size: 1.1rem; /* Adjusted font size */
+            }
+
+            .contact-card a, .contact-info a, .contact-info p, .article-content, .article-link, .sidebar-link, .logo-caption, .contact-card-quote {
+                font-size: 0.9rem; /* Adjusted font size */
+            }
+            .citation {
+                font-size: 0.8rem; /* Adjusted font size */
+            }
+            .ual-logo {
+                font-size: 2rem; /* Adjust size for very small screens */
+            }
+        }
+        /* --- End of Media Queries --- */
+
+    </style>
+</head>
+<body>
+    <div class="grid-lines"></div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="container">
+            <header>
+                <h1>UAL Newsletter Article Submission</h1>
+                <p class="subtitle">Focus Areas, Process, and Contact Information</p>
+
+                <div class="contact-card">
+                    <h2><i class="fas fa-info-circle"></i> Welcome Authors</h2>
+                    <div class="contact-card-content">
+                        <p class="contact-card-quote">
+                            Thank you for your interest in contributing to the UAL Newsletter. Please review our focus areas, use the submission form below, and feel free to contact our editorial team with any questions.
+                        </p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="articles-container">
+                <!-- Card 1: Focus Areas (formerly Guidelines) -->
+                <div class="article-card" id="guidelines">
+                    <h3><i class="fas fa-lightbulb"></i> Focus Areas</h3>
+                    <div class="article-content">
+                        <p>We welcome articles that explore the dynamic landscape of academic literacies, particularly within the African context. Our focus areas include:</p>
+
+                        <p><strong>Writing Center & Language Support:</strong></p>
+                        <ul>
+                            <li>Innovative practices in writing centers and language units.</li>
+                            <li>Supporting multilingual writers and speakers.</li>
+                            <li>Tutor training and peer mentoring programs.</li>
+                        </ul>
+
+                        <p><strong>Teaching & Learning:</strong></p>
+                        <ul>
+                            <li>Effective pedagogies for academic literacies development.</li>
+                            <li>Integrating academic literacies across disciplines.</li>
+                            <li>Student engagement and learning strategies.</li>
+                        </ul>
+
+                        <!-- REPLACED ASSESSMENT SECTION -->
+                        <p><strong>Language Unit:</strong></p>
+                        <ul>
+                            <li>Sharing editing services for academic texts.</li>
+                            <li>Providing transcription services for research data.</li>
+                            <li>Developing language resources and workshops for students and staff.</li>
+                            <li>Conducting research on academic language practices and support.</li>
+                        </ul>
+                        <!-- END REPLACEMENT -->
+
+                        <p><strong>Conferences & Community Engagement:</strong></p>
+                        <ul>
+                            <li>Insights from academic literacies conferences.</li>
+                            <li>Community-based learning and outreach initiatives.</li>
+                            <li>Collaborations between institutions and communities.</li>
+                        </ul>
+
+                        <p><strong>Multilingualism & Technology:</strong></p>
+                        <ul>
+                            <li>Role of digital tools in supporting diverse learners.</li>
+                            <li>Addressing challenges and opportunities in multilingual contexts.</li>
+                        </ul>
+                    </div>
+                    <div class="article-meta">
+                        <span class="meta-tag">Writing Center</span>
+                        <span class="meta-tag">Teaching</span>
+                        <span class="meta-tag">Language Unit</span> <!-- Updated Tag -->
+                        <span class="meta-tag">Conferences</span>
+                        <span class="meta-tag">Community</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Contact Us -->
+                <div class="article-card" id="contact">
+                    <h3><i class="fas fa-envelope"></i> Contact the Editorial Team</h3>
+                    <div class="article-content">
+                        <p>If you have any questions about the submission process, need clarification on our focus areas, or require assistance with your draft, please do not hesitate to contact our editorial support team.</p>
+
+                        <div class="contact-info">
+                            <p><strong>Nkosingiphile Zondi</strong><br>
+                                Editor<br>
+                                <a href="mailto:nkosingiphile.zondi@up.ac.za">nkosingiphile.zondi@up.ac.za</a>
+                            </p>
+                            <p><strong>Joanne Lombard</strong><br>
+                                Editor<br>
+                                <a href="mailto:joanne.lombard@up.ac.za">joanne.lombard@up.ac.za</a>
+                            </p>
+                            <p><strong>Oscar Eybers</strong><br>
+                                Editor<br>
+                                <a href="mailto:oscar.eybers@up.ac.za">oscar.eybers@up.ac.za</a>
+                            </p>
+                        </div>
+
+                        <!-- REMOVED EDITORIAL SUPPORT PARAGRAPH -->
+                        <!-- <p><strong>Editorial Support:</strong></p>
+                        <p>Our editorial team is here to help you with article submissions, provide feedback on drafts, and answer any questions about the publication process. Don't hesitate to reach out!</p> -->
+                        <!-- END REMOVAL -->
+
+                        <p><strong>Multimedia:</strong></p>
+                        <p>Multimedia files can be emailed directly to the editors or uploaded to a Google Drive folder. If using Google Drive, please share the link in the submission form or via email.</p>
+                    </div>
+                    <div class="article-meta">
+                        <span class="meta-tag">Contact</span>
+                        <span class="meta-tag new-tag">Support</span>
+                    </div>
+                </div>
+
+                 <!-- Placeholder Card 3 -->
+                 <div class="article-card">
+                    <h3><i class="fas fa-question-circle"></i> Additional Information</h3>
+                    <div class="article-content">
+                        <p>This space can be used for additional information, such as:</p>
+                        <ul>
+                            <li>Upcoming submission deadlines.</li>
+                            <li>Thematic issues or calls for papers.</li>
+                            <li>A link to the UAL Newsletter's style guide.</li>
+                            <li>FAQs for authors.</li>
+                        </ul>
+                        <p>Check back regularly for updates.</p>
+                    </div>
+                    <div class="article-meta">
+                        <span class="meta-tag">Info</span>
+                        <span class="meta-tag new-tag">Placeholder</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Submission Process (formerly Upload) (Full Width) -->
+                <!-- --- MODIFIED: Updated instructions within this section to reflect typing/pasting article --->
+                <div class="google-form-container" id="upload">
+                    <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
+                    <div class="article-content">
+                        <p>To submit your article, please complete the Google Form below. You will be asked to provide your article file and some basic information.</p>
+                        <p><strong>Instructions:</strong></p>
+                        <ol>
+                            <li>Answer the initial questions (e.g., about Title, Abstract, Author Bio).</li>
+                            <li>Type or copy/paste your full article text into the designated text area within the form.</li>
+                            <li>Review your entries carefully.</li>
+                            <li>Click the "Submit" button at the end of the form.</li>
+                        </ol>
+                        <p>Our editorial team will review your submission and contact you regarding the next steps.</p>
+                        <p><strong>Note:</strong> For multimedia files (images, audio, video), please upload them to a shared Google Drive folder or email them separately to the editorial team. Include a link to the files in the Google Form if using Drive.</p>
+
+                        <!-- Embed the Google Form -->
+                        <iframe class="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSeWZXbVyi2yhBZbObyFIpWFqfMnnsbWkIzk5AYomUjuNTp2rg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    </div>
+                </div>
+                <!-- --- END MODIFICATION --- -->
+
+            </div>
+
+            <div class="copyright">
+                <div class="university-logo">
+                    <svg viewBox="0 0 100 30" fill="#003366">
+                        <path d="M10,15 Q20,5 30,15 T50,15 T70,15 T90,15" stroke="#FF6600" stroke-width="2" fill="none"/>
+                        <circle cx="50" cy="15" r="5" fill="#FF6600"/>
+                        <text x="50" y="25" text-anchor="middle" fill="#444" font-size="8">UAL NEWSLETTER</text>
+                    </svg>
+                </div>
+                <p>© 2024 UAL Newsletter Submission Portal</p>
+                <p>For inquiries, contact the editorial team.</p>
+                <p>Explore more: <a href="https://www.up.ac.za/unit-for-academic-literacy" target="_blank">Unit for Academic Literacy</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar with animated logo and links -->
+    <div class="sidebar">
+        <!-- --- MODIFIED: Wrap logo container in a link and add caption --- -->
+        <a href="https://www.up.ac.za/unit-for-academic-literacy" class="sidebar-logo-link" target="_blank">
+            <div class="sidebar-logo-container">
+                <div class="ual-logo">UAL</div>
+            </div>
+        </a>
+        <p class="logo-caption">Click image to go to UAL Home</p>
+        <!-- --- END MODIFICATION --- -->
+
+        <div class="sidebar-links">
+            <a href="#guidelines" class="sidebar-link">
+                Focus Areas
+            </a>
+            <a href="#upload" class="sidebar-link">
+                Submission
+            </a>
+            <a href="#contact" class="sidebar-link">
+                Contact Us
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Add subtle animation to article cards on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.article-card, .google-form-container');
+
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+
+            // Add pulse animation to contact card
+            const contactCard = document.querySelector('.contact-card');
+            setInterval(() => {
+                contactCard.style.boxShadow = '0 0 25px rgba(0, 51, 102, 0.2)';
+                setTimeout(() => {
+                    contactCard.style.boxShadow = '0 0 15px rgba(0, 51, 102, 0.1)';
+                }, 1000);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
