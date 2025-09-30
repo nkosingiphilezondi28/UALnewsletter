@@ -16,7 +16,7 @@
 
         :root {
             --primary: #003366; /* Dark Blue */
-            --secondary: #FF6600; /* Orange */
+            --secondary: #FF6600; /* Dark Orange */
             --accent: #FF6600;
             --dark: #003366;
             --darker: #002244;
@@ -38,7 +38,7 @@
             font-family: 'Exo 2', sans-serif;
             line-height: 1.6;
             display: flex;
-            font-size: 18px; /* Increased base font size */
+            font-size: 18px;
         }
 
         body::before {
@@ -84,48 +84,45 @@
         }
 
         /* --- Animated UAL Logo Container --- */
-        /* --- MODIFIED: Make container a link --- */
         .sidebar-logo-link {
-            display: block; /* Make the link behave like a block element */
-            text-decoration: none; /* Remove default underline */
-            color: inherit; /* Inherit text color */
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
+        
         .sidebar-logo-container {
             width: 100%;
-            aspect-ratio: 1; /* Makes it square */
+            aspect-ratio: 1;
             border-radius: 6px;
             margin-bottom: 15px;
             border: 1px solid rgba(0, 51, 102, 0.2);
-            background-color: #000; /* Black background */
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
             position: relative;
-             /* --- MODIFIED: Add cursor pointer to indicate it's clickable --- */
             cursor: pointer;
-            transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+            transition: box-shadow 0.3s ease;
         }
+        
         .sidebar-logo-container:hover {
-             /* --- MODIFIED: Add glow effect on hover --- */
             box-shadow:
                 0 0 10px var(--primary),
                 0 0 20px var(--secondary),
                 0 0 30px var(--primary);
         }
-        /* --- END MODIFICATION --- */
-
 
         .ual-logo {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            font-size: 3rem; /* Adjust size as needed */
-            color: #c0c0c0; /* Silver color */
+            font-size: 3rem;
+            color: #c0c0c0;
             text-shadow:
                 0 0 5px #fff,
                 0 0 10px #fff,
                 0 0 15px #fff,
-                0 0 20px #0ff, /* Cyan glow */
+                0 0 20px #0ff,
                 0 0 35px #0ff,
                 0 0 40px #0ff;
             animation: glow 1.5s ease-in-out infinite alternate;
@@ -146,23 +143,20 @@
                     0 0 10px #fff,
                     0 0 20px #fff,
                     0 0 30px #fff,
-                    0 0 40px #f0f, /* Magenta glow */
+                    0 0 40px #f0f,
                     0 0 70px #f0f,
                     0 0 80px #f0f;
             }
         }
 
-        /* --- MODIFIED: Style for the caption --- */
         .logo-caption {
             text-align: center;
-            font-size: 0.85rem; /* Smaller font size */
-            color: var(--primary); /* Use primary color */
-            margin-top: -10px; /* Pull caption closer to the logo */
-            margin-bottom: 15px; /* Space below the caption */
-            font-style: italic; /* Italicize the caption */
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-top: -10px;
+            margin-bottom: 15px;
+            font-style: italic;
         }
-        /* --- END MODIFICATION --- */
-
 
         .sidebar-links {
             display: flex;
@@ -173,12 +167,12 @@
         .sidebar-link {
             color: var(--primary);
             text-decoration: none;
-            padding: 12px 15px; /* Increased padding */
+            padding: 12px 15px;
             border-radius: 6px;
             background: rgba(0, 51, 102, 0.05);
             border: 1px solid rgba(0, 51, 102, 0.1);
             transition: all 0.3s ease;
-            font-size: 1.1rem; /* Increased font size */
+            font-size: 1.1rem;
             text-align: center;
         }
 
@@ -200,8 +194,8 @@
 
         header {
             text-align: center;
-            padding: 25px 0 15px; /* Increased padding */
-            margin-bottom: 20px; /* Increased margin */
+            padding: 25px 0 15px;
+            margin-bottom: 20px;
             position: relative;
             background: linear-gradient(to right, rgba(0, 51, 102, 0.1), transparent);
             border-bottom: 1px solid rgba(0, 51, 102, 0.2);
@@ -209,8 +203,8 @@
         }
 
         h1 {
-            font-size: 2.2rem; /* Increased font size */
-            margin-bottom: 10px; /* Increased margin */
+            font-size: 2.2rem;
+            margin-bottom: 10px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
@@ -236,10 +230,10 @@
         }
 
         .subtitle {
-            font-size: 1.1rem; /* Increased font size */
+            font-size: 1.1rem;
             color: #444;
             max-width: 800px;
-            margin: 12px auto 15px; /* Increased margins */
+            margin: 12px auto 15px;
             line-height: 1.5;
         }
 
@@ -247,9 +241,9 @@
             background: var(--card-bg);
             border: 1px solid rgba(0, 51, 102, 0.1);
             border-radius: 9px;
-            padding: 15px; /* Increased padding */
+            padding: 15px;
             max-width: 95%;
-            margin: 20px auto; /* Increased margin */
+            margin: 20px auto;
             backdrop-filter: blur(10px);
             box-shadow: 0 0 18px rgba(0, 51, 102, 0.1);
             transition: all 0.4s ease;
@@ -257,6 +251,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            min-height: 200px;
         }
 
         .contact-card-content {
@@ -268,7 +263,7 @@
         .contact-card-quote {
             flex-grow: 1;
             color: #333;
-            font-size: 1.1rem; /* Increased font size */
+            font-size: 1.1rem;
             margin: 0;
             line-height: 1.5;
         }
@@ -297,8 +292,8 @@
 
         .contact-card h2 {
             color: var(--primary);
-            margin-bottom: 12px; /* Increased margin */
-            font-size: 1.4rem; /* Increased font size */
+            margin-bottom: 12px;
+            font-size: 1.4rem;
             display: flex;
             align-items: center;
             gap: 9px;
@@ -310,11 +305,11 @@
         .contact-card a {
             color: var(--primary);
             text-decoration: none;
-            font-size: 1.1rem; /* Increased font size */
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             word-break: break-word;
             display: inline-block;
-            padding: 5px 8px; /* Increased padding */
+            padding: 5px 8px;
             border-radius: 3px;
         }
 
@@ -327,7 +322,7 @@
         /* Grid layout for cards */
         .articles-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin: 24px 0;
         }
@@ -336,14 +331,14 @@
             background: var(--card-bg);
             border: 1px solid rgba(0, 51, 102, 0.1);
             border-radius: 9px;
-            padding: 20px; /* Increased padding */
+            padding: 20px;
             transition: all 0.4s ease;
             backdrop-filter: blur(5px);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 650px; /* Ensures symmetrical sizing */
+            min-height: 650px; /* Consistent height for symmetry */
         }
 
         .article-card::before {
@@ -371,8 +366,8 @@
 
         .article-card h3 {
             color: var(--primary);
-            font-size: 1.4rem; /* Increased font size */
-            margin-bottom: 12px; /* Increased margin */
+            font-size: 1.4rem;
+            margin-bottom: 12px;
             line-height: 1.3;
             font-weight: 600;
             display: flex;
@@ -382,55 +377,55 @@
         }
 
         .article-card h3 i {
-            font-size: 1.3rem; /* Increased icon size */
+            font-size: 1.3rem;
         }
 
         .article-content {
             color: #222;
-            font-size: 1.1rem; /* Increased font size */
-            line-height: 1.6; /* Slightly increased line height */
-            margin-bottom: 15px; /* Increased margin */
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
             flex-grow: 1;
             text-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
         }
 
         .article-content p {
-            margin-bottom: 12px; /* Increased margin */
+            margin-bottom: 12px;
         }
 
         .article-content ul, .article-content ol {
-            padding-left: 20px; /* Increased padding */
-            margin-bottom: 12px; /* Increased margin */
+            padding-left: 20px;
+            margin-bottom: 12px;
         }
 
         .article-content li {
-            margin-bottom: 8px; /* Increased margin */
+            margin-bottom: 8px;
         }
 
         .citation {
             background: rgba(0, 51, 102, 0.1);
             color: var(--primary);
-            padding: 5px 10px; /* Increased padding */
+            padding: 5px 10px;
             border-radius: 12px;
-            font-size: 0.9rem; /* Increased font size */
+            font-size: 0.9rem;
             border: 1px solid rgba(0, 51, 102, 0.2);
             display: inline-block;
-            margin: 6px 0; /* Increased margin */
+            margin: 6px 0;
         }
 
         .article-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px; /* Increased gap */
-            margin: 10px 0; /* Increased margin */
+            gap: 10px;
+            margin: 10px 0;
         }
 
         .meta-tag {
             background: rgba(0, 51, 102, 0.1);
             color: var(--primary);
-            padding: 5px 10px; /* Increased padding */
+            padding: 5px 10px;
             border-radius: 12px;
-            font-size: 0.9rem; /* Increased font size */
+            font-size: 0.9rem;
             border: 1px solid rgba(0, 51, 102, 0.2);
             text-shadow: 0 0 3px rgba(0, 51, 102, 0.2);
         }
@@ -446,7 +441,7 @@
             display: inline-block;
             color: var(--light);
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            padding: 10px 18px; /* Increased padding */
+            padding: 10px 18px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
@@ -458,8 +453,8 @@
             letter-spacing: 0.6px;
             position: relative;
             overflow: hidden;
-            margin-top: 15px; /* Increased margin */
-            font-size: 1.1rem; /* Increased font size */
+            margin-top: 15px;
+            font-size: 1.1rem;
         }
 
         .article-link::before {
@@ -486,15 +481,15 @@
 
         .copyright {
             text-align: center;
-            padding: 30px 0 15px; /* Increased padding */
+            padding: 30px 0 15px;
             color: #555;
-            font-size: 0.9rem; /* Increased font size */
+            font-size: 0.9rem;
             border-top: 1px solid rgba(0, 51, 102, 0.1);
-            margin-top: 30px; /* Increased margin */
+            margin-top: 30px;
         }
 
         .copyright p {
-            margin: 8px 0; /* Increased margin */
+            margin: 8px 0;
         }
 
         .copyright a {
@@ -509,28 +504,29 @@
         }
 
         .university-logo {
-            width: 120px; /* Increased width */
-            margin: 12px auto; /* Increased margin */
+            width: 120px;
+            margin: 12px auto;
             filter: brightness(0.8);
             opacity: 0.7;
         }
 
         /* --- Specific styles for iframe and contact info --- */
         .google-form-container {
-            grid-column: 1 / -1; /* Span full width */
+            grid-column: 1 / -1;
             background: var(--card-bg);
             border: 1px solid rgba(0, 51, 102, 0.1);
             border-radius: 9px;
-            padding: 20px; /* Increased padding */
-            margin: 20px 0; /* Increased margin */
+            padding: 20px;
+            margin: 20px 0;
             box-shadow: 0 0 18px rgba(0, 51, 102, 0.1);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            min-height: 650px; /* Ensures symmetrical sizing */
+            min-height: 650px;
         }
+        
         .google-form-container::before {
-             content: '';
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
@@ -541,46 +537,53 @@
             transform-origin: left;
             transition: transform 0.5s ease;
         }
+        
         .google-form-container:hover {
             box-shadow: 0 6px 24px rgba(0, 51, 102, 0.3);
         }
+        
         .google-form-container:hover::before {
             transform: scaleX(1);
         }
+        
         .google-form-container h3 {
             color: var(--primary);
-            font-size: 1.4rem; /* Increased font size */
-            margin-bottom: 15px; /* Increased margin */
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px; /* Increased gap */
+            gap: 10px;
             font-family: 'Orbitron', sans-serif;
         }
+        
         .google-form-iframe {
             width: 100%;
-            height: 800px; /* Increased height */
-            /* --- MODIFIED: Added glowing border --- */
-            box-shadow: 0 0 15px rgba(0, 51, 102, 0.5), 0 0 15px rgba(255, 102, 0, 0.5); /* Glowing border */
-            border: 1px solid var(--primary); /* Solid base border */
+            height: 800px;
+            box-shadow: 0 0 15px rgba(0, 51, 102, 0.5), 0 0 15px rgba(255, 102, 0, 0.5);
+            border: 1px solid var(--primary);
             border-radius: 5px;
-            margin-top: 15px; /* Increased margin */
-            /* --- END MODIFICATION --- */
+            margin-top: 15px;
         }
+        
         .contact-info {
-            margin-top: 15px; /* Increased margin */
+            margin-top: 15px;
         }
+        
         .contact-info p {
-            margin-bottom: 8px; /* Increased margin */
-            font-size: 1.1rem; /* Increased font size */
+            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
+        
         .contact-info a {
             color: var(--primary);
             text-decoration: underline;
-            font-size: 1.1rem; /* Increased font size */
+            font-size: 1.1rem;
         }
+        
         .contact-info a:hover {
             color: var(--secondary);
         }
+        
         /* --- End of specific styles --- */
 
         /* --- Media Queries for Mobile Compatibility --- */
@@ -588,7 +591,7 @@
             body {
                 flex-direction: column;
                 padding: 10px;
-                font-size: 16px; /* Adjust font size for smaller screens */
+                font-size: 16px;
             }
 
             .sidebar {
@@ -603,11 +606,11 @@
             }
 
             h1 {
-                font-size: 1.8rem; /* Adjusted font size */
+                font-size: 1.8rem;
             }
 
             .subtitle {
-                font-size: 1rem; /* Adjusted font size */
+                font-size: 1rem;
             }
 
             .contact-card-content {
@@ -619,56 +622,56 @@
 
         @media (max-width: 600px) {
             h1 {
-                font-size: 1.6rem; /* Adjusted font size */
+                font-size: 1.6rem;
             }
 
             .contact-card a, .contact-info a, .contact-info p, .article-content, .article-link, .sidebar-link, .logo-caption {
-                font-size: 1rem; /* Adjusted font size */
+                font-size: 1rem;
             }
 
             .article-card {
-                padding: 15px 12px; /* Adjusted padding */
+                padding: 15px 12px;
             }
 
             .article-card h3 {
-                font-size: 1.2rem; /* Adjusted font size */
+                font-size: 1.2rem;
             }
 
             .subtitle {
-                font-size: 0.9rem; /* Adjusted font size */
+                font-size: 0.9rem;
             }
 
             .sidebar {
                 padding: 10px;
             }
             .contact-card-quote {
-                font-size: 0.95rem; /* Adjusted font size */
+                font-size: 0.95rem;
             }
             .google-form-iframe {
-                height: 600px; /* Adjust height for smaller screens if needed */
+                height: 600px;
             }
             .ual-logo {
-                font-size: 2.5rem; /* Adjust size for smaller screens */
+                font-size: 2.5rem;
             }
         }
 
         @media (max-width: 400px) {
             h1 {
-                font-size: 1.4rem; /* Adjusted font size */
+                font-size: 1.4rem;
             }
 
             .article-card h3 {
-                font-size: 1.1rem; /* Adjusted font size */
+                font-size: 1.1rem;
             }
 
             .contact-card a, .contact-info a, .contact-info p, .article-content, .article-link, .sidebar-link, .logo-caption, .contact-card-quote {
-                font-size: 0.9rem; /* Adjusted font size */
+                font-size: 0.9rem;
             }
             .citation {
-                font-size: 0.8rem; /* Adjusted font size */
+                font-size: 0.8rem;
             }
             .ual-logo {
-                font-size: 2rem; /* Adjust size for very small screens */
+                font-size: 2rem;
             }
         }
         /* --- End of Media Queries --- */
@@ -689,7 +692,7 @@
                     <h2><i class="fas fa-info-circle"></i> Welcome Authors</h2>
                     <div class="contact-card-content">
                         <p class="contact-card-quote">
-                            Thank you for your interest in contributing to the UAL Newsletter. Please review our focus areas, use the submission form below, and feel free to contact our editorial team with any questions. All submissions should be sent through the Google Form below.
+                            Thank you for your interest in contributing to the UAL Newsletter. Please review our focus areas, use the submission form below, and feel free to contact our editorial team with any questions. All submissions must be made through the official Google Form using the account: <strong>ualnewslettera@gmail.com</strong>.
                         </p>
                     </div>
                 </div>
@@ -742,7 +745,7 @@
                     <div class="article-meta">
                         <span class="meta-tag">Writing Center</span>
                         <span class="meta-tag">Teaching</span>
-                        <span class="meta-tag">Language Unit</span> <!-- Updated Tag -->
+                        <span class="meta-tag">Language Unit</span>
                         <span class="meta-tag">Conferences</span>
                         <span class="meta-tag">Community</span>
                     </div>
@@ -750,23 +753,28 @@
 
                 <!-- Card 2: Contact Us -->
                 <div class="article-card" id="contact">
-                    <h3><i class="fas fa-envelope"></i> Contact the Editorial Team</h3>
+                    <h3><i class="fas fa-envelope"></i> Official Submission Information</h3>
                     <div class="article-content">
-                        <p>All article submissions must be made through the Google Form below. For any questions about the submission process, please contact our editorial team:</p>
-
+                        <p><strong>Important:</strong> All article submissions must be made through the Google Form below. The official account for UAL Newsletter submissions is:</p>
+                        
                         <div class="contact-info">
-                            <p><strong>Editorial Team</strong><br>
+                            <p><strong>Official Submission Email:</strong><br>
                                 <a href="mailto:ualnewslettera@gmail.com">ualnewslettera@gmail.com</a>
                             </p>
-                            <p>Our editorial team is here to help you with article submissions, provide feedback on drafts, and answer any questions about the publication process.</p>
                         </div>
 
-                        <p><strong>Important Note:</strong></p>
-                        <p>ualnewslettera@gmail.com is the official email account for the UAL Newsletter Google Form submissions. Please use this email for all submission-related inquiries.</p>
+                        <p>Our editorial team uses this account to manage all submissions. If you have questions about the submission process, please contact us through this same email address.</p>
+                        
+                        <p><strong>Important Notes:</strong></p>
+                        <ul>
+                            <li>All submissions must use the Google Form below</li>
+                            <li>ualnewslettera@gmail.com is the only official account for submissions</li>
+                            <li>Do not use any other email address for submissions</li>
+                        </ul>
                     </div>
                     <div class="article-meta">
-                        <span class="meta-tag">Contact</span>
-                        <span class="meta-tag new-tag">Official Account</span>
+                        <span class="meta-tag">Official Account</span>
+                        <span class="meta-tag new-tag">Important</span>
                     </div>
                 </div>
 
@@ -789,29 +797,28 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Submission Process (formerly Upload) (Full Width) -->
-                <!-- --- MODIFIED: Updated instructions within this section to reflect typing/pasting article --- -->
+                <!-- Card 3: Submission Process -->
                 <div class="google-form-container" id="upload">
                     <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
                     <div class="article-content">
-                        <p>To submit your article, please complete the Google Form below. This is the official submission method for the UAL Newsletter.</p>
-                        <p><strong>Official Submission Email:</strong> ualnewslettera@gmail.com</p>
+                        <p><strong>Official Submission Account:</strong> ualnewslettera@gmail.com</p>
+                        <p>This is the only official account for UAL Newsletter submissions. All submissions must be made through the form below.</p>
                         
-                        <p><strong>Instructions:</strong></p>
+                        <p><strong>Submission Process:</strong></p>
                         <ol>
-                            <li>Answer the initial questions (e.g., about Title, Abstract, Author Bio).</li>
-                            <li>Type or copy/paste your full article text into the designated text area within the form.</li>
-                            <li>Review your entries carefully.</li>
+                            <li>Click the Google Form below to access the submission portal.</li>
+                            <li>Answer all required questions (Title, Abstract, Author Bio).</li>
+                            <li>Type or copy/paste your full article text into the designated text area.</li>
+                            <li>Review your entries carefully before submitting.</li>
                             <li>Click the "Submit" button at the end of the form.</li>
                         </ol>
-                        <p>Our editorial team will review your submission and contact you regarding the next steps.</p>
-                        <p><strong>Note:</strong> For multimedia files (images, audio, video), please upload them to a shared Google Drive folder or email them separately to the editorial team. Include a link to the files in the Google Form if using Drive.</p>
+                        <p>After submission, our editorial team will contact you via ualnewslettera@gmail.com regarding the next steps.</p>
+                        <p><strong>Note:</strong> For multimedia files (images, audio, video), please upload them to a shared Google Drive folder and include the link in the Google Form.</p>
 
                         <!-- Embed the Google Form -->
                         <iframe class="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSeWZXbVyi2yhBZbObyFIpWFqfMnnsbWkIzk5AYomUjuNTp2rg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                     </div>
                 </div>
-                <!-- --- END MODIFICATION --- -->
 
             </div>
 
@@ -823,23 +830,23 @@
                         <text x="50" y="25" text-anchor="middle" fill="#444" font-size="8">UAL NEWSLETTER</text>
                     </svg>
                 </div>
-                <p>© 2024 UAL Newsletter Submission Portal</p>
+                <p>© 2025 UAL Newsletter Submission Portal</p>
                 <p>All submissions must use the official Google Form and email: ualnewslettera@gmail.com</p>
                 <p>Explore more: <a href="https://www.up.ac.za/unit-for-academic-literacy" target="_blank">Unit for Academic Literacy</a></p>
+                <p>Copyright © University of Pretoria 2025. All rights reserved.</p>
             </div>
         </div>
     </div>
 
     <!-- Sidebar with animated logo and links -->
     <div class="sidebar">
-        <!-- --- MODIFIED: Wrap logo container in a link and add caption --- -->
+        <!-- Logo section -->
         <a href="https://www.up.ac.za/unit-for-academic-literacy" class="sidebar-logo-link" target="_blank">
             <div class="sidebar-logo-container">
                 <div class="ual-logo">UAL</div>
             </div>
         </a>
         <p class="logo-caption">Click image to go to UAL Home</p>
-        <!-- --- END MODIFICATION --- -->
 
         <div class="sidebar-links">
             <a href="#guidelines" class="sidebar-link">
@@ -849,7 +856,7 @@
                 Submit Article
             </a>
             <a href="#contact" class="sidebar-link">
-                Contact Us
+                Official Account
             </a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWZXbVyi2yhBZbObyFIpWFqfMnnsbWkIzk5AYomUjuNTp2rg/viewform" class="sidebar-link" target="_blank">
                 Google Form
@@ -885,5 +892,3 @@
     </script>
 </body>
 </html>
-
-
