@@ -201,7 +201,18 @@
         }
 
         .form-container {
-            grid-column: 1 / -1;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 25px;
+            background: var(--card-bg);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            background: 
+                linear-gradient(white, white) padding-box,
+                linear-gradient(90deg, var(--primary), var(--secondary), var(--primary)) border-box;
+            animation: shimmer 2s infinite linear;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
         }
 
         .google-form-iframe {
@@ -281,7 +292,12 @@
             }
             
             .form-container {
-                grid-column: 1;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .google-form-iframe {
+                height: 450px;
             }
         }
 
@@ -308,7 +324,7 @@
             }
             
             .google-form-iframe {
-                height: 450px;
+                height: 400px;
             }
         }
     </style>
@@ -403,25 +419,23 @@
                             <li>Revision period: 1-2 weeks</li>
                             <li>Publication: Quarterly issues</li>
                         </ul>
-                        
-                   
+                    </div>
                     <div class="card-footer">
                         <span class="meta-tag">Guidelines</span>
                         <span class="meta-tag new-tag">New</span>
                     </div>
                 </div>
-
-                <div class="card form-container" id="submission">
-                    <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
-                    <div class="card-content">
-                        <p>Complete our official submission form below. All required fields must be filled for your submission to be processed.</p>
-                        
-                        <p><strong>Submission Account:</strong> ualnewslettera@gmail.com</p>
-                        
-                        <p>After submission, our editorial team will contact you via email within 5 business days.</p>
-                    </div>
-                    <iframe class="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScN5VBk8ueXtupNYndkpAVpwaVQve4SVDdu2LPLxxHqbJROZg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+            
+            <!-- MOVED FORM OUTSIDE ARTICLES-CONTAINER -->
+            <div class="form-container" id="submission">
+                <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
+                <div class="card-content">
+                    <p>Complete our official submission form below. All required fields must be filled for your submission to be processed.</p>
+                    <p><strong>Submission Account:</strong> ualnewslettera@gmail.com</p>
+                    <p>After submission, our editorial team will contact you via email within 5 business days.</p>
                 </div>
+                <iframe class="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScN5VBk8ueXtupNYndkpAVpwaVQve4SVDdu2LPLxxHqbJROZg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
             </div>
 
             <div class="copyright">
