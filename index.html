@@ -321,12 +321,15 @@
         /* Grid layout for cards */
         .articles-container {
             display: grid;
+            /* Now uses 2 columns instead of 3 when cards are present */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin: 24px 0;
         }
 
-        .article-card {
+        /* --- Unified Card Styling for Symmetry --- */
+        .article-card,
+        .google-form-container {
             background: var(--card-bg);
             border: 1px solid rgba(0, 51, 102, 0.1);
             border-radius: 9px;
@@ -337,10 +340,21 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 650px; /* Consistent height for symmetry */
+            min-height: 550px; /* FIXED HEIGHT FOR SYMMETRY */
+        }
+        
+        .article-card {
+             /* Ensures standard cards take 1 column each */
+            grid-column: span 1;
         }
 
-        .article-card::before {
+        .google-form-container {
+            grid-column: 1 / -1; /* Make the form span the entire width */
+            margin: 20px 0;
+        }
+
+        .article-card::before,
+        .google-form-container::before {
             content: '';
             position: absolute;
             top: 0;
@@ -353,17 +367,21 @@
             transition: transform 0.5s ease;
         }
 
-        .article-card:hover {
+        .article-card:hover,
+        .google-form-container:hover {
             transform: translateY(-6px);
             box-shadow: 0 9px 24px rgba(0, 0, 0, 0.1);
             border-color: rgba(0, 51, 102, 0.4);
         }
 
-        .article-card:hover::before {
+        .article-card:hover::before,
+        .google-form-container:hover::before {
             transform: scaleX(1);
         }
+        /* --- End Unified Card Styling --- */
 
-        .article-card h3 {
+        .article-card h3,
+        .google-form-container h3 {
             color: var(--primary);
             font-size: 1.4rem;
             margin-bottom: 12px;
@@ -373,6 +391,7 @@
             align-items: center;
             gap: 8px;
             text-shadow: 0 0 6px rgba(0, 51, 102, 0.3);
+            font-family: 'Orbitron', sans-serif; /* Applied to form header too */
         }
 
         .article-card h3 i {
@@ -417,6 +436,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin: 10px 0;
+            margin-top: auto; /* Push meta tags to the bottom of the symmetrical cards */
         }
 
         .meta-tag {
@@ -436,129 +456,15 @@
             text-shadow: 0 0 3px rgba(255, 102, 0, 0.2);
         }
 
-        .article-link {
-            display: inline-block;
-            color: var(--light);
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            padding: 10px 18px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 51, 102, 0.3);
-            text-align: center;
-            width: 100%;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 0.6px;
-            position: relative;
-            overflow: hidden;
-            margin-top: 15px;
-            font-size: 1.1rem;
-        }
-
-        .article-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: 0.5s;
-        }
-
-        .article-link:hover {
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            color: var(--light);
-            box-shadow: 0 0 12px rgba(0, 51, 102, 0.5);
-            transform: translateY(-1.8px);
-        }
-
-        .article-link:hover::before {
-            left: 100%;
-        }
-
-        .copyright {
-            text-align: center;
-            padding: 30px 0 15px;
-            color: #555;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(0, 51, 102, 0.1);
-            margin-top: 30px;
-        }
-
-        .copyright p {
-            margin: 8px 0;
-        }
-
-        .copyright a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .copyright a:hover {
-            color: var(--secondary);
-            text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
-        }
-
-        .university-logo {
-            width: 120px;
-            margin: 12px auto;
-            filter: brightness(0.8);
-            opacity: 0.7;
-        }
-
         /* --- Specific styles for iframe and contact info --- */
-        .google-form-container {
-            grid-column: 1 / -1;
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 51, 102, 0.1);
-            border-radius: 9px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 0 18px rgba(0, 51, 102, 0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            min-height: 650px;
-        }
-        
-        .google-form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2.4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-        
-        .google-form-container:hover {
-            box-shadow: 0 6px 24px rgba(0, 51, 102, 0.3);
-        }
-        
-        .google-form-container:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .google-form-container h3 {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Orbitron', sans-serif;
-        }
         
         .google-form-iframe {
             width: 100%;
-            height: 800px;
-            box-shadow: 0 0 15px rgba(0, 51, 102, 0.5), 0 0 15px rgba(255, 102, 0, 0.5);
+            height: 700px; /* Reduced height for better card symmetry */
+            /* Glowing Border Effect */
+            box-shadow: 
+                0 0 10px rgba(0, 51, 102, 0.8), 
+                0 0 20px rgba(255, 102, 0, 0.5);
             border: 1px solid var(--primary);
             border-radius: 5px;
             margin-top: 15px;
@@ -602,6 +508,11 @@
 
             .articles-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .article-card,
+            .google-form-container {
+                min-height: auto; /* Remove fixed height on small screens */
             }
 
             h1 {
@@ -680,6 +591,7 @@
 <body>
     <div class="grid-lines"></div>
 
+    <!-- Main content -->
     <div class="main-content">
         <div class="container">
             <header>
@@ -697,6 +609,7 @@
             </header>
 
             <div class="articles-container">
+                <!-- Card 1: Focus Areas -->
                 <div class="article-card" id="guidelines">
                     <h3><i class="fas fa-lightbulb"></i> Focus Areas</h3>
                     <div class="article-content">
@@ -714,6 +627,7 @@
                             <li>Effective pedagogies for academic literacies development.</li>
                             <li>Integrating academic literacies across disciplines.</li>
                             <li>Student engagement and learning strategies.</li>
+                            <li>**HOD insights.**</li>
                         </ul>
 
                         <p><strong>Language Unit:</strong></p>
@@ -723,89 +637,58 @@
                             <li>Developing language resources and workshops for students and staff.</li>
                             <li>Conducting research on academic language practices and support.</li>
                         </ul>
+
                         <p><strong>Conferences & Community Engagement:</strong></p>
                         <ul>
                             <li>Insights from academic literacies conferences.</li>
                             <li>Community-based learning and outreach initiatives.</li>
                             <li>Collaborations between institutions and communities.</li>
                         </ul>
-
-                        <p><strong>Multilingualism & Technology:</strong></p>
-                        <ul>
-                            <li>Role of digital tools in supporting diverse learners.</li>
-                            <li>Addressing challenges and opportunities in multilingual contexts.</li>
-                        </ul>
                     </div>
                     <div class="article-meta">
                         <span class="meta-tag">Writing Center</span>
                         <span class="meta-tag">Teaching</span>
-                        <span class="meta-tag">Language Unit</span>
-                        <span class="meta-tag">Conferences</span>
-                        <span class="meta-tag">Community</span>
+                        <span class="meta-tag">HOD Insights</span>
                     </div>
                 </div>
 
-                <div class="article-card" id="contact">
-                    <h3><i class="fas fa-envelope"></i> Official Submission Information</h3>
-                    <div class="article-content">
-                        <p><strong>Important:</strong> All article submissions must be made through the Google Form below. The official account for UAL Newsletter submissions is:</p>
-                        
-                        <div class="contact-info">
-                            <p><strong>Official Submission Email:</strong><br>
-                                <a href="mailto:ualnewslettera@gmail.com">ualnewslettera@gmail.com</a>
-                            </p>
-                        </div>
-
-                        <p>Our editorial team uses this account to manage all submissions. If you have questions about the submission process, please contact us through this same email address.</p>
-                        
-                        <p><strong>Important Notes:</strong></p>
-                        <ul>
-                            <li>All submissions must use the Google Form below</li>
-                            <li>ualnewslettera@gmail.com is the only official account for submissions</li>
-                            <li>Do not use any other email address for submissions</li>
-                        </ul>
-                    </div>
-                    <div class="article-meta">
-                        <span class="meta-tag">Official Account</span>
-                        <span class="meta-tag new-tag">Important</span>
-                    </div>
-                </div>
-
+                <!-- Placeholder Card 2: Formerly Additional Information, now reflowed for symmetry -->
                  <div class="article-card">
                     <h3><i class="fas fa-question-circle"></i> Additional Information</h3>
                     <div class="article-content">
                         <p>This space can be used for additional information, such as:</p>
                         <ul>
-                            <li>Upcoming submission deadlines.</li>
-                            <li>Thematic issues or calls for papers.</li>
-                            <li>A link to the UAL Newsletter's style guide.</li>
-                            <li>FAQs for authors.</li>
+                            <li>Upcoming submission deadlines and review timelines.</li>
+                            <li>Thematic issues or specific calls for papers.</li>
+                            <li>A link to the UAL Newsletter's internal style guide or template.</li>
+                            <li>FAQs for authors and contributors.</li>
                         </ul>
-                        <p>Check back regularly for updates.</p>
+                        <p>Check back regularly for updates or contact us directly at the official email address for the latest information.</p>
+                        <p class="citation">Official Email: ualnewslettera@gmail.com</p>
                     </div>
                     <div class="article-meta">
                         <span class="meta-tag">Info</span>
-                        <span class="meta-tag new-tag">Placeholder</span>
+                        <span class="meta-tag new-tag">Updates</span>
                     </div>
                 </div>
 
+                <!-- Card 3: Submission Process (Full Width) -->
                 <div class="google-form-container" id="upload">
                     <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
                     <div class="article-content">
                         <p><strong>Official Submission Account:</strong> ualnewslettera@gmail.com</p>
-                        <p>This is the only official account for UAL Newsletter submissions. All submissions must be made through the form below.</p>
+                        <p>Please use the embedded form below to submit your article. This ensures all metadata and required fields are captured correctly by the editorial team.</p>
                         
-                        <p><strong>Submission Process:</strong></p>
+                        <p><strong>Submission Steps:</strong></p>
                         <ol>
-                            <li>Click the Google Form below to access the submission portal.</li>
-                            <li>Answer all required questions (Title, Abstract, Author Bio).</li>
-                            <li>Type or copy/paste your full article text into the designated text area.</li>
-                            <li>Review your entries carefully before submitting.</li>
-                            <li>Click the "Submit" button at the end of the form.</li>
+                            <li>Complete all required fields in the form below.</li>
+                            <li>Paste your full article text into the designated text area.</li>
+                            <li>Review and submit the form.</li>
                         </ol>
                         <p>After submission, our editorial team will contact you via ualnewslettera@gmail.com regarding the next steps.</p>
-                        <p><strong>Note:</strong> For multimedia files (images, audio, video), please upload them to a shared Google Drive folder and include the link in the Google Form.</p>
+                        <p><strong>Note:</strong> If the form does not display correctly, please use the **Submit UAL story** link in the sidebar.</p>
 
+                        <!-- Embed the Google Form: Responder/View link used for embedding -->
                         <iframe class="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScN5VBk8ueXtupNYndkpAVpwaVQve4SVDdu2LPLxxHqbJROZg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                     </div>
                 </div>
@@ -828,7 +711,9 @@
         </div>
     </div>
 
+    <!-- Sidebar with animated logo and links -->
     <div class="sidebar">
+        <!-- Logo section -->
         <a href="https://www.up.ac.za/unit-for-academic-literacy" class="sidebar-logo-link" target="_blank">
             <div class="sidebar-logo-container">
                 <div class="ual-logo">UAL</div>
@@ -843,11 +728,10 @@
             <a href="#upload" class="sidebar-link">
                 Submit Article
             </a>
-            <a href="#contact" class="sidebar-link">
-                Official Account
-            </a>
+            <!-- The 'Official Account' link has been removed -->
+            <!-- Updated Sidebar link wording and URL to edit view -->
             <a href="https://docs.google.com/forms/d/1_IboqECYWnuEuBIDp6iKnQSVwgvd6Olb0yI5gKL5ZL0/edit" class="sidebar-link" target="_blank">
-                Google Form
+                Submit UAL story
             </a>
         </div>
     </div>
