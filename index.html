@@ -14,8 +14,8 @@
         }
 
         :root {
-            --primary: #003366; /* Dark Blue */
-            --secondary: #FF6600; /* Dark Orange */
+            --primary: #003366;
+            --secondary: #FF6600;
             --light: #ffffff;
             --text: #000000;
             --card-bg: #f8f9fa;
@@ -25,17 +25,33 @@
         body {
             background: var(--light);
             color: var(--text);
-            min-height: 100vh;
-            padding: 20px;
             font-family: 'Exo 2', sans-serif;
             line-height: 1.6;
             font-size: 18px;
         }
 
         .container {
+            display: flex;
             max-width: 1400px;
             margin: 0 auto;
-            position: relative;
+            padding: 20px;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            position: sticky;
+            top: 20px;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
         }
 
         header {
@@ -103,20 +119,22 @@
         }
 
         .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 51, 102, 0.1);
+            border: 2px solid transparent;
             border-radius: 12px;
+            background: 
+                linear-gradient(white, white) padding-box,
+                linear-gradient(90deg, var(--primary), var(--secondary), var(--primary)) border-box;
+            animation: shimmer 2s infinite linear;
             padding: 25px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            height: 550px;
-            display: flex;
-            flex-direction: column;
+            height: auto;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 51, 102, 0.1);
+        @keyframes shimmer {
+            to {
+                background-position: 100% 0;
+            }
         }
 
         .card h3 {
@@ -130,11 +148,9 @@
         }
 
         .card-content {
-            flex: 1;
             color: #333;
             font-size: 1.1rem;
             line-height: 1.6;
-            overflow-y: auto;
         }
 
         .card-content ul, .card-content ol {
@@ -171,13 +187,12 @@
 
         .form-container {
             grid-column: 1 / -1;
-            height: 550px;
         }
 
         .google-form-iframe {
             width: 100%;
-            height: 100%;
-            border: 1px solid var(--primary);
+            height: 500px;
+            border: none;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 51, 102, 0.1);
         }
@@ -199,18 +214,6 @@
         .copyright a:hover {
             color: var(--secondary);
             text-decoration: underline;
-        }
-
-        .sidebar {
-            position: sticky;
-            top: 20px;
-            width: var(--sidebar-width);
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 51, 102, 0.1);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            height: fit-content;
         }
 
         .sidebar-logo {
@@ -252,8 +255,8 @@
         }
 
         @media (max-width: 900px) {
-            .articles-container {
-                grid-template-columns: 1fr;
+            .container {
+                flex-direction: column;
             }
             
             .sidebar {
@@ -262,16 +265,8 @@
                 margin-bottom: 30px;
             }
             
-            .card {
-                height: auto;
-            }
-            
             .form-container {
-                height: auto;
-            }
-            
-            .google-form-iframe {
-                height: 500px;
+                grid-column: 1;
             }
         }
 
@@ -318,107 +313,111 @@
             </div>
         </div>
 
-        <header>
-            <h1>UAL Newsletter Article Submission</h1>
-            <p class="subtitle">Contribute to our academic literacy newsletter with your research and insights</p>
-        </header>
+        <div class="main-content">
+            <header>
+                <h1>UAL Newsletter Article Submission</h1>
+                <p class="subtitle">Contribute to our academic literacy newsletter with your research and insights</p>
+            </header>
 
-        <div class="contact-card">
-            <h2><i class="fas fa-info-circle"></i> Welcome Authors</h2>
-            <p>Thank you for your interest in contributing to the UAL Newsletter. All submissions must be made through our official Google Form using the account: <strong>ualnewslettera@gmail.com</strong>.</p>
-            <p>Our editorial team will review your submission and contact you regarding next steps.</p>
-        </div>
+            <div class="contact-card">
+                <h2><i class="fas fa-info-circle"></i> Welcome Authors</h2>
+                <p>Thank you for your interest in contributing to the UAL Newsletter. All submissions must be made through our official Google Form using the account: <strong>ualnewslettera@gmail.com</strong>.</p>
+                <p>Our editorial team will review your submission and contact you regarding next steps.</p>
+            </div>
 
-        <div class="articles-container">
-            <div class="card" id="guidelines">
-                <h3><i class="fas fa-lightbulb"></i> Focus Areas</h3>
-                <div class="card-content">
-                    <p>We welcome articles that explore academic literacies within the African context, with particular focus on:</p>
-                    
-                    <p><strong>Writing Center & Language Support:</strong></p>
-                    <ul>
-                        <li>Innovative practices in writing centers and language units</li>
-                        <li>Supporting multilingual writers and speakers</li>
-                        <li>Tutor training and peer mentoring programs</li>
-                    </ul>
-                    
-                    <p><strong>Teaching & Learning:</strong></p>
-                    <ul>
-                        <li>Effective pedagogies for academic literacies development</li>
-                        <li>Integrating academic literacies across disciplines</li>
-                        <li>Student engagement and learning strategies</li>
-                        <li><strong>HOD Insights and Reports</strong></li>
-                    </ul>
-                    
-                    <p><strong>Language Unit Services:</strong></p>
-                    <ul>
-                        <li>Editing services for academic texts</li>
-                        <li>Transcription services for research data</li>
-                        <li>Language resources and workshops for students and staff</li>
-                        <li>Research on academic language practices</li>
-                    </ul>
-                    
-                    <p><strong>Community Engagement:</strong></p>
-                    <ul>
-                        <li>Insights from academic literacies conferences</li>
-                        <li>Community-based learning and outreach initiatives</li>
-                        <li>Collaborations between institutions and communities</li>
-                    </ul>
+            <div class="articles-container">
+                <div class="card" id="guidelines">
+                    <h3><i class="fas fa-lightbulb"></i> Focus Areas</h3>
+                    <div class="card-content">
+                        <p>We welcome articles that explore academic literacies within the African context, with particular focus on:</p>
+                        
+                        <p><strong>Writing Center & Language Support:</strong></p>
+                        <ul>
+                            <li>Innovative practices in writing centers and language units</li>
+                            <li>Supporting multilingual writers and speakers</li>
+                            <li>Tutor training and peer mentoring programs</li>
+                        </ul>
+                        
+                        <p><strong>Teaching & Learning:</strong></p>
+                        <ul>
+                            <li>Effective pedagogies for academic literacies development</li>
+                            <li>Integrating academic literacies across disciplines</li>
+                            <li>Student engagement and learning strategies</li>
+                            <li><strong>HOD Insights and Reports</strong></li>
+                        </ul>
+                        
+                        <p><strong>Language Unit Services:</strong></p>
+                        <ul>
+                            <li>Editing services for academic texts</li>
+                            <li>Transcription services for research data</li>
+                            <li>Language resources and workshops for students and staff</li>
+                            <li>Research on academic language practices</li>
+                        </ul>
+                        
+                        <p><strong>Community Engagement:</strong></p>
+                        <ul>
+                            <li>Insights from academic literacies conferences</li>
+                            <li>Community-based learning and outreach initiatives</li>
+                            <li>Collaborations between institutions and communities</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="meta-tag">Writing Center</span>
+                        <span class="meta-tag">Teaching</span>
+                        <span class="meta-tag">HOD Reports</span>
+                        <span class="meta-tag new-tag">Research</span>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <span class="meta-tag">Writing Center</span>
-                    <span class="meta-tag">Teaching</span>
-                    <span class="meta-tag">HOD Reports</span>
-                    <span class="meta-tag new-tag">Research</span>
+
+                <div class="card">
+                    <h3><i class="fas fa-question-circle"></i> Submission Guidelines</h3>
+                    <div class="card-content">
+                        <p><strong>Before submitting:</strong></p>
+                        <ul>
+                            <li>All articles must be original and previously unpublished</li>
+                            <li>Word count: 800-1500 words</li>
+                            <li>Include 2-3 relevant images (with permissions)</li>
+                            <li>Follow APA 7th edition citation style</li>
+                            <li>Include a 100-word author bio</li>
+                        </ul>
+                        
+                        <p><strong>Review process:</strong></p>
+                        <ul>
+                            <li>Initial screening: 3-5 business days</li>
+                            <li>Peer review: 2-3 weeks</li>
+                            <li>Revision period: 1-2 weeks</li>
+                            <li>Publication: Quarterly issues</li>
+                        </ul>
+                        
+                        <p>For detailed style guidelines, download our <a href="#">Author Style Guide</a>.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="meta-tag">Guidelines</span>
+                        <span class="meta-tag new-tag">New</span>
+                    </div>
+                </div>
+
+                <div class="card form-container" id="submission">
+                    <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
+                    <div class="card-content">
+                        <p>Complete our official submission form below. All required fields must be filled for your submission to be processed.</p>
+                        
+                        <p><strong>Submission Account:</strong> ualnewslettera@gmail.com</p>
+                        
+                        <p>After submission, our editorial team will contact you via email within 5 business days.</p>
+                    </div>
+                    <iframe class="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScN5VBk8ueXtupNYndkpAVpwaVQve4SVDdu2LPLxxHqbJROZg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-question-circle"></i> Submission Guidelines</h3>
-                <div class="card-content">
-                    <p><strong>Before submitting:</strong></p>
-                    <ul>
-                        <li>All articles must be original and previously unpublished</li>
-                        <li>Word count: 800-1500 words</li>
-                        <li>Include 2-3 relevant images (with permissions)</li>
-                        <li>Follow APA 7th edition citation style</li>
-                        <li>Include a 100-word author bio</li>
-                    </ul>
-                    
-                    <p><strong>Review process:</strong></p>
-                    <ul>
-                        <li>Initial screening: 3-5 business days</li>
-                        <li>Peer review: 2-3 weeks</li>
-                        <li>Revision period: 1-2 weeks</li>
-                        <li>Publication: Quarterly issues</li>
-                    </ul>
-                    
-                    <p>For detailed style guidelines, download our <a href="#">Author Style Guide</a>.</p>
-                </div>
-                <div class="card-footer">
-                    <span class="meta-tag">Guidelines</span>
-                    <span class="meta-tag new-tag">New</span>
-                </div>
+            <div class="copyright">
+                <p>© 2025 Unit for Academic Literacy, University of Pretoria</p>
+                <p>All rights reserved. | <a href="https://www.up.ac.za/unit-for-academic-literacy" target="_blank">Visit UAL Homepage</a></p>
+                <p>Contact: ualnewslettera@gmail.com | Phone: 0124202334</p>
             </div>
-
-            <div class="card form-container" id="submission">
-                <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
-                <div class="card-content">
-                    <p>Complete our official submission form below. All required fields must be filled for your submission to be processed.</p>
-                    
-                    <p><strong>Submission Account:</strong> ualnewslettera@gmail.com</p>
-                    
-                    <p>After submission, our editorial team will contact you via email within 5 business days.</p>
-                </div>
-                <iframe class="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScN5VBk8ueXtupNYndkpAVpwaVQve4SVDdu2LPLxxHqbJROZg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-            </div>
-        </div>
-
-        <div class="copyright">
-            <p>© 2025 Unit for Academic Literacy, University of Pretoria</p>
-            <p>All rights reserved. | <a href="https://www.up.ac.za/unit-for-academic-literacy" target="_blank">Visit UAL Homepage</a></p>
-            <p>Contact: ualnewslettera@gmail.com | Phone: +27 12 420 2000</p>
         </div>
     </div>
 </body>
 </html>
+
+
