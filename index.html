@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -342,6 +343,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            min-height: 650px; /* Ensures symmetrical sizing */
         }
 
         .article-card::before {
@@ -525,6 +527,7 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            min-height: 650px; /* Ensures symmetrical sizing */
         }
         .google-form-container::before {
              content: '';
@@ -555,7 +558,7 @@
         }
         .google-form-iframe {
             width: 100%;
-            height: 900px; /* Increased height */
+            height: 800px; /* Increased height */
             /* --- MODIFIED: Added glowing border --- */
             box-shadow: 0 0 15px rgba(0, 51, 102, 0.5), 0 0 15px rgba(255, 102, 0, 0.5); /* Glowing border */
             border: 1px solid var(--primary); /* Solid base border */
@@ -642,7 +645,7 @@
                 font-size: 0.95rem; /* Adjusted font size */
             }
             .google-form-iframe {
-                height: 700px; /* Adjust height for smaller screens if needed */
+                height: 600px; /* Adjust height for smaller screens if needed */
             }
             .ual-logo {
                 font-size: 2.5rem; /* Adjust size for smaller screens */
@@ -686,7 +689,7 @@
                     <h2><i class="fas fa-info-circle"></i> Welcome Authors</h2>
                     <div class="contact-card-content">
                         <p class="contact-card-quote">
-                            Thank you for your interest in contributing to the UAL Newsletter. Please review our focus areas, use the submission form below, and feel free to contact our editorial team with any questions.
+                            Thank you for your interest in contributing to the UAL Newsletter. Please review our focus areas, use the submission form below, and feel free to contact our editorial team with any questions. All submissions should be sent through the Google Form below.
                         </p>
                     </div>
                 </div>
@@ -749,34 +752,21 @@
                 <div class="article-card" id="contact">
                     <h3><i class="fas fa-envelope"></i> Contact the Editorial Team</h3>
                     <div class="article-content">
-                        <p>If you have any questions about the submission process, need clarification on our focus areas, or require assistance with your draft, please do not hesitate to contact our editorial support team.</p>
+                        <p>All article submissions must be made through the Google Form below. For any questions about the submission process, please contact our editorial team:</p>
 
                         <div class="contact-info">
-                            <p><strong>Nkosingiphile Zondi</strong><br>
-                                Editor<br>
+                            <p><strong>Editorial Team</strong><br>
                                 <a href="mailto:ualnewslettera@gmail.com">ualnewslettera@gmail.com</a>
                             </p>
-                            <p><strong>Joanne Lombard</strong><br>
-                                Editor<br>
-                                <a href="mailto:joanne.lombard@up.ac.za">joanne.lombard@up.ac.za</a>
-                            </p>
-                            <p><strong>Oscar Eybers</strong><br>
-                                Editor<br>
-                                <a href="mailto:oscar.eybers@up.ac.za">oscar.eybers@up.ac.za</a>
-                            </p>
+                            <p>Our editorial team is here to help you with article submissions, provide feedback on drafts, and answer any questions about the publication process.</p>
                         </div>
 
-                        <!-- REMOVED EDITORIAL SUPPORT PARAGRAPH -->
-                        <!-- <p><strong>Editorial Support:</strong></p>
-                        <p>Our editorial team is here to help you with article submissions, provide feedback on drafts, and answer any questions about the publication process. Don't hesitate to reach out!</p> -->
-                        <!-- END REMOVAL -->
-
-                        <p><strong>Multimedia:</strong></p>
-                        <p>Multimedia files can be emailed directly to the editors or uploaded to a Google Drive folder. If using Google Drive, please share the link in the submission form or via email.</p>
+                        <p><strong>Important Note:</strong></p>
+                        <p>ualnewslettera@gmail.com is the official email account for the UAL Newsletter Google Form submissions. Please use this email for all submission-related inquiries.</p>
                     </div>
                     <div class="article-meta">
                         <span class="meta-tag">Contact</span>
-                        <span class="meta-tag new-tag">Support</span>
+                        <span class="meta-tag new-tag">Official Account</span>
                     </div>
                 </div>
 
@@ -800,11 +790,13 @@
                 </div>
 
                 <!-- Card 3: Submission Process (formerly Upload) (Full Width) -->
-                <!-- --- MODIFIED: Updated instructions within this section to reflect typing/pasting article --->
+                <!-- --- MODIFIED: Updated instructions within this section to reflect typing/pasting article --- -->
                 <div class="google-form-container" id="upload">
                     <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
                     <div class="article-content">
-                        <p>To submit your article, please complete the Google Form below. You will be asked to provide your article file and some basic information.</p>
+                        <p>To submit your article, please complete the Google Form below. This is the official submission method for the UAL Newsletter.</p>
+                        <p><strong>Official Submission Email:</strong> ualnewslettera@gmail.com</p>
+                        
                         <p><strong>Instructions:</strong></p>
                         <ol>
                             <li>Answer the initial questions (e.g., about Title, Abstract, Author Bio).</li>
@@ -832,7 +824,7 @@
                     </svg>
                 </div>
                 <p>© 2024 UAL Newsletter Submission Portal</p>
-                <p>For inquiries, contact the editorial team.</p>
+                <p>All submissions must use the official Google Form and email: ualnewslettera@gmail.com</p>
                 <p>Explore more: <a href="https://www.up.ac.za/unit-for-academic-literacy" target="_blank">Unit for Academic Literacy</a></p>
             </div>
         </div>
@@ -854,10 +846,13 @@
                 Focus Areas
             </a>
             <a href="#upload" class="sidebar-link">
-                Submission
+                Submit Article
             </a>
             <a href="#contact" class="sidebar-link">
                 Contact Us
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWZXbVyi2yhBZbObyFIpWFqfMnnsbWkIzk5AYomUjuNTp2rg/viewform" class="sidebar-link" target="_blank">
+                Google Form
             </a>
         </div>
     </div>
@@ -890,3 +885,5 @@
     </script>
 </body>
 </html>
+
+
