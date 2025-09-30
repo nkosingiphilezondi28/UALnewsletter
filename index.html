@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UAL Newsletter Article Submission</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  ">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,174 +16,20 @@
         :root {
             --primary: #003366; /* Dark Blue */
             --secondary: #FF6600; /* Dark Orange */
-            --accent: #FF6600;
-            --dark: #003366;
-            --darker: #002244;
-            --light: #ffffff; /* White background */
-            --text: #000000; /* Black text */
-            --card-bg: #f8f9fa; /* Very light grey for cards */
+            --light: #ffffff;
+            --text: #000000;
+            --card-bg: #f8f9fa;
             --sidebar-width: 280px;
-            --lighter-blue: #3399cc;
-            --golden-yellow: #FFD700;
         }
 
         body {
-            background: var(--light); /* White background */
-            color: var(--text); /* Black text */
+            background: var(--light);
+            color: var(--text);
             min-height: 100vh;
-            padding: 15px;
-            position: relative;
-            overflow-x: hidden;
+            padding: 20px;
             font-family: 'Exo 2', sans-serif;
             line-height: 1.6;
-            display: flex;
             font-size: 18px;
-            -webkit-locale: "en";
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at 10% 20%, rgba(0, 51, 102, 0.03) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 102, 0, 0.03) 0%, transparent 20%);
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        .grid-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(0, 51, 102, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 51, 102, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* --- Sidebar styling --- */
-        .sidebar {
-            width: var(--sidebar-width);
-            padding: 15px;
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 51, 102, 0.1);
-            border-radius: 9px;
-            margin-right: 20px;
-            backdrop-filter: blur(10px);
-            height: fit-content;
-            position: sticky;
-            top: 15px;
-        }
-
-        /* --- Animated UAL Logo Container --- */
-        .sidebar-logo-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .sidebar-logo-container {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(0, 51, 102, 0.2);
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: box-shadow 0.3s ease;
-        }
-        
-        .sidebar-logo-container:hover {
-            box-shadow:
-                0 0 10px var(--primary),
-                0 0 20px var(--secondary),
-                0 0 30px var(--primary);
-        }
-
-        .ual-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 3rem;
-            color: #c0c0c0;
-            text-shadow:
-                0 0 5px #fff,
-                0 0 10px #fff,
-                0 0 15px #fff,
-                0 0 20px #0ff,
-                0 0 35px #0ff,
-                0 0 40px #0ff;
-            animation: glow 1.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow:
-                    0 0 5px #fff,
-                    0 0 10px #fff,
-                    0 0 15px #fff,
-                    0 0 20px #0ff,
-                    0 0 35px #0ff,
-                    0 0 40px #0ff;
-            }
-            to {
-                text-shadow:
-                    0 0 10px #fff,
-                    0 0 20px #fff,
-                    0 0 30px #fff,
-                    0 0 40px #f0f,
-                    0 0 70px #f0f,
-                    0 0 80px #f0f;
-            }
-        }
-
-        .logo-caption {
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--primary);
-            margin-top: -10px;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
-        .sidebar-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .sidebar-link {
-            color: var(--primary);
-            text-decoration: none;
-            padding: 12px 15px;
-            border-radius: 6px;
-            background: rgba(0, 51, 102, 0.05);
-            border: 1px solid rgba(0, 51, 102, 0.1);
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        .sidebar-link:hover {
-            background: rgba(0, 51, 102, 0.15);
-            box-shadow: 0 0 12px rgba(0, 51, 102, 0.5);
-            transform: translateY(-1.5px);
-        }
-
-        .main-content {
-            flex: 1;
         }
 
         .container {
@@ -194,574 +40,385 @@
 
         header {
             text-align: center;
-            padding: 25px 0 15px;
-            margin-bottom: 20px;
-            position: relative;
-            background: linear-gradient(to right, rgba(0, 51, 102, 0.1), transparent);
-            border-bottom: 1px solid rgba(0, 51, 102, 0.2);
-            border-radius: 0 0 10px 10px;
+            padding: 30px 0;
+            margin-bottom: 30px;
         }
 
         h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-transform: uppercase;
             letter-spacing: 1.8px;
-            text-shadow: 0 0 9px rgba(0, 51, 102, 0.5);
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Exo 2', sans-serif;
             font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 10%;
-            width: 80%;
-            height: 1.2px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
-            border-radius: 50%;
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            color: #444;
+            font-size: 1.2rem;
+            color: #555;
             max-width: 800px;
-            margin: 12px auto 15px;
+            margin: 12px auto;
             line-height: 1.5;
         }
 
         .contact-card {
             background: var(--card-bg);
             border: 1px solid rgba(0, 51, 102, 0.1);
-            border-radius: 9px;
-            padding: 15px;
-            max-width: 95%;
-            margin: 20px auto;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 18px rgba(0, 51, 102, 0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 200px;
-        }
-
-        .contact-card-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .contact-card-quote {
-            flex-grow: 1;
-            color: #333;
-            font-size: 1.1rem;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2.4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 24px rgba(0, 51, 102, 0.3);
-        }
-
-        .contact-card:hover::before {
-            transform: scaleX(1);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 90%;
         }
 
         .contact-card h2 {
             color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 9px;
-            font-family: 'Orbitron', sans-serif;
-            z-index: 1;
-            position: relative;
+            gap: 10px;
         }
 
-        .contact-card a {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            word-break: break-word;
-            display: inline-block;
-            padding: 5px 8px;
-            border-radius: 3px;
-        }
-
-        .contact-card a:hover {
-            color: var(--secondary);
-            text-shadow: 0 0 9px rgba(255, 102, 0, 0.7);
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        /* Grid layout for cards */
-        .articles-container {
-            display: grid;
-            /* Now uses 2 columns instead of 3 when cards are present */
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin: 24px 0;
-        }
-
-        /* --- Unified Card Styling for Symmetry --- */
-        .article-card,
-        .google-form-container {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 51, 102, 0.1);
-            border-radius: 9px;
-            padding: 20px;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 550px; /* FIXED HEIGHT FOR SYMMETRY */
-        }
-        
-        .article-card {
-             /* Ensures standard cards take 1 column each */
-            grid-column: span 1;
-        }
-
-        .google-form-container {
-            grid-column: 1 / -1; /* Make the form span the entire width */
-            margin: 20px 0;
-        }
-
-        .article-card::before,
-        .google-form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2.4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-
-        .article-card:hover,
-        .google-form-container:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 9px 24px rgba(0, 0, 0, 0.1);
-            border-color: rgba(0, 51, 102, 0.4);
-        }
-
-        .article-card:hover::before,
-        .google-form-container:hover::before {
-            transform: scaleX(1);
-        }
-        /* --- End Unified Card Styling --- */
-
-        .article-card h3,
-        .google-form-container h3 {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            line-height: 1.3;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-shadow: 0 0 6px rgba(0, 51, 102, 0.3);
-            font-family: 'Orbitron', sans-serif; /* Applied to form header too */
-        }
-
-        .article-card h3 i {
-            font-size: 1.3rem;
-        }
-
-        .article-content {
-            color: #222;
+        .contact-card p {
+            color: #333;
             font-size: 1.1rem;
             line-height: 1.6;
-            margin-bottom: 15px;
-            flex-grow: 1;
-            text-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 10px;
         }
 
-        .article-content p {
-            margin-bottom: 12px;
-        }
-
-        .article-content ul, .article-content ol {
-            padding-left: 20px;
-            margin-bottom: 12px;
-        }
-
-        .article-content li {
-            margin-bottom: 8px;
-        }
-
-        .citation {
-            background: rgba(0, 51, 102, 0.1);
+        .contact-card strong {
             color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(0, 51, 102, 0.2);
-            display: inline-block;
-            margin: 6px 0;
         }
 
-        .article-meta {
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 550px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 51, 102, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            flex: 1;
+            color: #333;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            overflow-y: auto;
+        }
+
+        .card-content ul, .card-content ol {
+            padding-left: 20px;
+            margin: 12px 0;
+        }
+
+        .card-content li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .card-footer {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin: 10px 0;
-            margin-top: auto; /* Push meta tags to the bottom of the symmetrical cards */
+            margin-top: 15px;
         }
 
         .meta-tag {
             background: rgba(0, 51, 102, 0.1);
             color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 12px;
+            padding: 6px 12px;
+            border-radius: 8px;
             font-size: 0.9rem;
             border: 1px solid rgba(0, 51, 102, 0.2);
-            text-shadow: 0 0 3px rgba(0, 51, 102, 0.2);
         }
 
         .new-tag {
             background: rgba(255, 102, 0, 0.1);
-            color: var(--accent);
+            color: var(--secondary);
             border-color: rgba(255, 102, 0, 0.2);
-            text-shadow: 0 0 3px rgba(255, 102, 0, 0.2);
         }
 
-        /* --- Specific styles for iframe and contact info --- */
-        
+        .form-container {
+            grid-column: 1 / -1;
+            height: 550px;
+        }
+
         .google-form-iframe {
             width: 100%;
-            height: 700px; /* Reduced height for better card symmetry */
-            /* Glowing Border Effect */
-            box-shadow: 
-                0 0 10px rgba(0, 51, 102, 0.8), 
-                0 0 20px rgba(255, 102, 0, 0.5);
+            height: 100%;
             border: 1px solid var(--primary);
-            border-radius: 5px;
-            margin-top: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 51, 102, 0.1);
         }
-        
-        .contact-info {
-            margin-top: 15px;
+
+        .copyright {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid rgba(0, 51, 102, 0.1);
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.95rem;
         }
-        
-        .contact-info p {
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-        
-        .contact-info a {
+
+        .copyright a {
             color: var(--primary);
-            text-decoration: underline;
-            font-size: 1.1rem;
+            text-decoration: none;
         }
-        
-        .contact-info a:hover {
+
+        .copyright a:hover {
             color: var(--secondary);
+            text-decoration: underline;
         }
-        
-        /* --- End of specific styles --- */
 
-        /* --- Media Queries for Mobile Compatibility --- */
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            width: var(--sidebar-width);
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+
+        .sidebar-logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .ual-logo {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-link {
+            color: var(--primary);
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            background: rgba(0, 51, 102, 0.05);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-link:hover {
+            background: rgba(0, 51, 102, 0.15);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 900px) {
-            body {
-                flex-direction: column;
-                padding: 10px;
-                font-size: 16px;
-            }
-
-            .sidebar {
-                width: 100%;
-                position: relative;
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-
             .articles-container {
                 grid-template-columns: 1fr;
             }
             
-            .article-card,
-            .google-form-container {
-                min-height: auto; /* Remove fixed height on small screens */
+            .sidebar {
+                width: 100%;
+                position: relative;
+                margin-bottom: 30px;
             }
-
-            h1 {
-                font-size: 1.8rem;
+            
+            .card {
+                height: auto;
             }
-
-            .subtitle {
-                font-size: 1rem;
+            
+            .form-container {
+                height: auto;
             }
-
-            .contact-card-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            
+            .google-form-iframe {
+                height: 500px;
             }
         }
 
         @media (max-width: 600px) {
             h1 {
-                font-size: 1.6rem;
-            }
-
-            .contact-card a, .contact-info a, .contact-info p, .article-content, .article-link, .sidebar-link, .logo-caption {
-                font-size: 1rem;
-            }
-
-            .article-card {
-                padding: 15px 12px;
-            }
-
-            .article-card h3 {
-                font-size: 1.2rem;
-            }
-
-            .subtitle {
-                font-size: 0.9rem;
-            }
-
-            .sidebar {
-                padding: 10px;
-            }
-            .contact-card-quote {
-                font-size: 0.95rem;
-            }
-            .google-form-iframe {
-                height: 600px;
-            }
-            .ual-logo {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            h1 {
-                font-size: 1.4rem;
-            }
-
-            .article-card h3 {
-                font-size: 1.1rem;
-            }
-
-            .contact-card a, .contact-info a, .contact-info p, .article-content, .article-link, .sidebar-link, .logo-caption, .contact-card-quote {
-                font-size: 0.9rem;
-            }
-            .citation {
-                font-size: 0.8rem;
-            }
-            .ual-logo {
                 font-size: 2rem;
             }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .sidebar {
+                padding: 20px;
+            }
+            
+            .sidebar-link {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .google-form-iframe {
+                height: 450px;
+            }
         }
-        /* --- End of Media Queries --- */
-
     </style>
 </head>
 <body>
-    <div class="grid-lines"></div>
-
-    <!-- Main content -->
-    <div class="main-content">
-        <div class="container">
-            <header>
-                <h1>UAL Newsletter Article Submission</h1>
-                <p class="subtitle">Focus Areas, Process, and Contact Information</p>
-
-                <div class="contact-card">
-                    <h2><i class="fas fa-info-circle"></i> Welcome Authors</h2>
-                    <div class="contact-card-content">
-                        <p class="contact-card-quote">
-                            Thank you for your interest in contributing to the UAL Newsletter. Please review our focus areas, use the submission form below, and feel free to contact our editorial team with any questions. All submissions must be made through the official Google Form using the account: <strong>ualnewslettera@gmail.com</strong>.
-                        </p>
-                    </div>
-                </div>
-            </header>
-
-            <div class="articles-container">
-                <!-- Card 1: Focus Areas -->
-                <div class="article-card" id="guidelines">
-                    <h3><i class="fas fa-lightbulb"></i> Focus Areas</h3>
-                    <div class="article-content">
-                        <p>We welcome articles that explore the dynamic landscape of academic literacies, particularly within the African context. Our focus areas include:</p>
-
-                        <p><strong>Writing Center & Language Support:</strong></p>
-                        <ul>
-                            <li>Innovative practices in writing centers and language units.</li>
-                            <li>Supporting multilingual writers and speakers.</li>
-                            <li>Tutor training and peer mentoring programs.</li>
-                        </ul>
-
-                        <p><strong>Teaching & Learning:</strong></p>
-                        <ul>
-                            <li>Effective pedagogies for academic literacies development.</li>
-                            <li>Integrating academic literacies across disciplines.</li>
-                            <li>Student engagement and learning strategies.</li>
-                            <li>**HOD insights.**</li>
-                        </ul>
-
-                        <p><strong>Language Unit:</strong></p>
-                        <ul>
-                            <li>Sharing editing services for academic texts.</li>
-                            <li>Providing transcription services for research data.</li>
-                            <li>Developing language resources and workshops for students and staff.</li>
-                            <li>Conducting research on academic language practices and support.</li>
-                        </ul>
-
-                        <p><strong>Conferences & Community Engagement:</strong></p>
-                        <ul>
-                            <li>Insights from academic literacies conferences.</li>
-                            <li>Community-based learning and outreach initiatives.</li>
-                            <li>Collaborations between institutions and communities.</li>
-                        </ul>
-                    </div>
-                    <div class="article-meta">
-                        <span class="meta-tag">Writing Center</span>
-                        <span class="meta-tag">Teaching</span>
-                        <span class="meta-tag">HOD Insights</span>
-                    </div>
-                </div>
-
-                <!-- Placeholder Card 2: Formerly Additional Information, now reflowed for symmetry -->
-                 <div class="article-card">
-                    <h3><i class="fas fa-question-circle"></i> Additional Information</h3>
-                    <div class="article-content">
-                        <p>This space can be used for additional information, such as:</p>
-                        <ul>
-                            <li>Upcoming submission deadlines and review timelines.</li>
-                            <li>Thematic issues or specific calls for papers.</li>
-                            <li>A link to the UAL Newsletter's internal style guide or template.</li>
-                            <li>FAQs for authors and contributors.</li>
-                        </ul>
-                        <p>Check back regularly for updates or contact us directly at the official email address for the latest information.</p>
-                        <p class="citation">Official Email: ualnewslettera@gmail.com</p>
-                    </div>
-                    <div class="article-meta">
-                        <span class="meta-tag">Info</span>
-                        <span class="meta-tag new-tag">Updates</span>
-                    </div>
-                </div>
-
-                <!-- Card 3: Submission Process (Full Width) -->
-                <div class="google-form-container" id="upload">
-                    <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
-                    <div class="article-content">
-                        <p><strong>Official Submission Account:</strong> ualnewslettera@gmail.com</p>
-                        <p>Please use the embedded form below to submit your article. This ensures all metadata and required fields are captured correctly by the editorial team.</p>
-                        
-                        <p><strong>Submission Steps:</strong></p>
-                        <ol>
-                            <li>Complete all required fields in the form below.</li>
-                            <li>Paste your full article text into the designated text area.</li>
-                            <li>Review and submit the form.</li>
-                        </ol>
-                        <p>After submission, our editorial team will contact you via ualnewslettera@gmail.com regarding the next steps.</p>
-                        <p><strong>Note:</strong> If the form does not display correctly, please use the **Submit UAL story** link in the sidebar.</p>
-
-                        <!-- Embed the Google Form: Responder/View link used for embedding -->
-                        <iframe class="google-form-iframe" src="  https://docs.google.com/forms/d/e/1FAIpQLScN5VBk8ueXtupNYndkpAVpwaVQve4SVDdu2LPLxxHqbJROZg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="copyright">
-                <div class="university-logo">
-                    <svg viewBox="0 0 100 30" fill="#003366">
-                        <path d="M10,15 Q20,5 30,15 T50,15 T70,15 T90,15" stroke="#FF6600" stroke-width="2" fill="none"/>
-                        <circle cx="50" cy="15" r="5" fill="#FF6600"/>
-                        <text x="50" y="25" text-anchor="middle" fill="#444" font-size="8">UAL NEWSLETTER</text>
-                    </svg>
-                </div>
-                <p>© 2025 UAL Newsletter Submission Portal</p>
-                <p>All submissions must use the official Google Form and email: ualnewslettera@gmail.com</p>
-                <p>Explore more: <a href="  https://www.up.ac.za/unit-for-academic-literacy  " target="_blank">Unit for Academic Literacy</a></p>
-                <p>Copyright © University of Pretoria 2025. All rights reserved.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sidebar with animated logo and links -->
-    <div class="sidebar">
-        <!-- Logo section -->
-        <a href="https://www.up.ac.za/unit-for-academic-literacy  " class="sidebar-logo-link" target="_blank">
-            <div class="sidebar-logo-container">
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-logo">
                 <div class="ual-logo">UAL</div>
+                <p style="text-align: center; color: var(--primary); margin-top: 8px; font-size: 0.9rem;">University of Pretoria</p>
             </div>
-        </a>
-        <p class="logo-caption">Click image to go to UAL Home</p>
+            
+            <div class="sidebar-links">
+                <a href="#guidelines" class="sidebar-link">Focus Areas</a>
+                <a href="#submission" class="sidebar-link">Submit Article</a>
+                <a href="https://www.up.ac.za/unit-for-academic-literacy" class="sidebar-link" target="_blank">UAL Homepage</a>
+            </div>
+        </div>
 
-        <div class="sidebar-links">
-            <a href="#guidelines" class="sidebar-link">
-                Focus Areas
-            </a>
-            <a href="#upload" class="sidebar-link">
-                Submit Article
-            </a>
-            <!-- The 'Official Account' link has been removed -->
-            <!-- Updated Sidebar link wording and URL to edit view -->
-            <a href="https://docs.google.com/forms/d/1_IboqECYWnuEuBIDp6iKnQSVwgvd6Olb0yI5gKL5ZL0/edit  " class="sidebar-link" target="_blank">
-                Submit UAL story
-            </a>
+        <header>
+            <h1>UAL Newsletter Article Submission</h1>
+            <p class="subtitle">Contribute to our academic literacy newsletter with your research and insights</p>
+        </header>
+
+        <div class="contact-card">
+            <h2><i class="fas fa-info-circle"></i> Welcome Authors</h2>
+            <p>Thank you for your interest in contributing to the UAL Newsletter. All submissions must be made through our official Google Form using the account: <strong>ualnewslettera@gmail.com</strong>.</p>
+            <p>Our editorial team will review your submission and contact you regarding next steps.</p>
+        </div>
+
+        <div class="articles-container">
+            <div class="card" id="guidelines">
+                <h3><i class="fas fa-lightbulb"></i> Focus Areas</h3>
+                <div class="card-content">
+                    <p>We welcome articles that explore academic literacies within the African context, with particular focus on:</p>
+                    
+                    <p><strong>Writing Center & Language Support:</strong></p>
+                    <ul>
+                        <li>Innovative practices in writing centers and language units</li>
+                        <li>Supporting multilingual writers and speakers</li>
+                        <li>Tutor training and peer mentoring programs</li>
+                    </ul>
+                    
+                    <p><strong>Teaching & Learning:</strong></p>
+                    <ul>
+                        <li>Effective pedagogies for academic literacies development</li>
+                        <li>Integrating academic literacies across disciplines</li>
+                        <li>Student engagement and learning strategies</li>
+                        <li><strong>HOD Insights and Reports</strong></li>
+                    </ul>
+                    
+                    <p><strong>Language Unit Services:</strong></p>
+                    <ul>
+                        <li>Editing services for academic texts</li>
+                        <li>Transcription services for research data</li>
+                        <li>Language resources and workshops for students and staff</li>
+                        <li>Research on academic language practices</li>
+                    </ul>
+                    
+                    <p><strong>Community Engagement:</strong></p>
+                    <ul>
+                        <li>Insights from academic literacies conferences</li>
+                        <li>Community-based learning and outreach initiatives</li>
+                        <li>Collaborations between institutions and communities</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <span class="meta-tag">Writing Center</span>
+                    <span class="meta-tag">Teaching</span>
+                    <span class="meta-tag">HOD Reports</span>
+                    <span class="meta-tag new-tag">Research</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-question-circle"></i> Submission Guidelines</h3>
+                <div class="card-content">
+                    <p><strong>Before submitting:</strong></p>
+                    <ul>
+                        <li>All articles must be original and previously unpublished</li>
+                        <li>Word count: 800-1500 words</li>
+                        <li>Include 2-3 relevant images (with permissions)</li>
+                        <li>Follow APA 7th edition citation style</li>
+                        <li>Include a 100-word author bio</li>
+                    </ul>
+                    
+                    <p><strong>Review process:</strong></p>
+                    <ul>
+                        <li>Initial screening: 3-5 business days</li>
+                        <li>Peer review: 2-3 weeks</li>
+                        <li>Revision period: 1-2 weeks</li>
+                        <li>Publication: Quarterly issues</li>
+                    </ul>
+                    
+                    <p>For detailed style guidelines, download our <a href="#">Author Style Guide</a>.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="meta-tag">Guidelines</span>
+                    <span class="meta-tag new-tag">New</span>
+                </div>
+            </div>
+
+            <div class="card form-container" id="submission">
+                <h3><i class="fas fa-upload"></i> Submit Your Article</h3>
+                <div class="card-content">
+                    <p>Complete our official submission form below. All required fields must be filled for your submission to be processed.</p>
+                    
+                    <p><strong>Submission Account:</strong> ualnewslettera@gmail.com</p>
+                    
+                    <p>After submission, our editorial team will contact you via email within 5 business days.</p>
+                </div>
+                <iframe class="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScN5VBk8ueXtupNYndkpAVpwaVQve4SVDdu2LPLxxHqbJROZg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 Unit for Academic Literacy, University of Pretoria</p>
+            <p>All rights reserved. | <a href="https://www.up.ac.za/unit-for-academic-literacy" target="_blank">Visit UAL Homepage</a></p>
+            <p>Contact: ualnewslettera@gmail.com | Phone: +27 12 420 2000</p>
         </div>
     </div>
-
-    <script>
-        // Add subtle animation to article cards on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.article-card, .google-form-container');
-
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 100 * index);
-            });
-
-            // Add pulse animation to contact card
-            const contactCard = document.querySelector('.contact-card');
-            setInterval(() => {
-                contactCard.style.boxShadow = '0 0 25px rgba(0, 51, 102, 0.2)';
-                setTimeout(() => {
-                    contactCard.style.boxShadow = '0 0 15px rgba(0, 51, 102, 0.1)';
-                }, 1000);
-            }, 3000);
-        });
-    </script>
 </body>
 </html>
